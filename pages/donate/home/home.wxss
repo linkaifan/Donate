@@ -1,0 +1,61 @@
+/* pages/donate/home/home.wxss */
+#home{
+    position: relative;
+}
+image{
+    display: block;
+}
+.head{
+    height: 200rpx;
+}
+.intro{
+    height: 400rpx;
+    margin-bottom: 30rpx;
+}
+.nav{
+    position: fixed;
+    bottom: 0;
+}
+.toSch,.toEnter{
+    height: 160rpx;
+    line-height: 160px;
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+}
+/* .toSch text,.toEnter text{
+} */
+.line{
+    width: 730rpx;
+    margin: 0 auto;
+    background-color: #ebebeb;
+    height: 5px;
+}
+.iconBox{
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    border-radius: 50%;
+    width: 106rpx;
+    height: 106rpx;
+}
+.iconBox image{
+    width: 65rpx;
+    height: 60rpx;
+}
+.first{
+    background-color: #866c6b;
+}
+.second{
+    border: 1px solid  #866c6b;
+}
+.right-iconBox{
+    display: flex;
+    align-items:center;
+    justify-content:center;
+}
+.right-iconBox,
+.right-iconBox image{
+    width: 43rpx;
+    height: 40rpx;
+}

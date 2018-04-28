@@ -1,0 +1,26 @@
+<!-- pages/donate/home/home.wxml -->
+<view id="home">
+    <view class="head"></view>
+    <view class="intro"></view>
+    <view class="nav">
+        <view class="toEnter" bindtap="toRank" data-id="enterprise">
+            <view class="iconBox first">
+                <image src="../../../assets/icon/home/head.png" class="icon"></image>
+            </view>
+            <text>我是企业</text>
+            <view class="right-iconBox">
+                <image src="../../../assets/icon/home/right.png" class="right-icon"></image>
+            </view>
+        </view>
+        <view class="line"></view>
+        <view class="toSch" bindtap="toRank" data-id="group">
+            <view class="iconBox second">
+                <image src="../../../assets/icon/home/tuan.png" class="icon"></image>
+            </view>
+            <text>我是社团</text>
+            <view class="right-iconBox">
+                <image src="../../../assets/icon/home/right.png" class="right-icon"></image>
+            </view>
+        </view>
+    </view>
+</view>

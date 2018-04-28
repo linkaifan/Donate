@@ -1,0 +1,47 @@
+<!-- pages/donate/publish/publish.wxml -->
+<view id="publish">
+    <view>
+        <view class="imgBox">
+            <image src="{{userInfo.avatarUrl}}"></image>
+        </view>
+        <text class="T-name">ID:{{userInfo.nickName}}</text>
+    </view>
+    <form>
+        <view class="inputBox">
+            企业:
+            <input data-cls="enterprise" bindinput="bindKeyInput" />
+        </view>
+        <view class="inputBox">
+            品牌:
+            <input data-cls="brand" bindinput="bindKeyInput" />
+        </view>
+        <view class="inputBox">
+            联系人:
+            <input data-cls="contact" bindinput="bindKeyInput" />
+        </view>
+        <view class="inputBox">
+            地址:
+            <input data-cls="address" bindinput="bindKeyInput" />
+        </view>
+        <view class="inputBox">
+            手机:
+            <input data-cls="phone" bindinput="bindKeyInput" />
+        </view>
+        <view class="inputBox">
+            QQ:
+            <input data-cls="qq" bindinput="bindKeyInput" />
+        </view>
+        <view class="inputBox">
+            邮箱:
+            <input data-cls="email" bindinput="bindKeyInput" />
+        </view>
+        <view class="inputBox">
+            时间范围:
+            <input data-cls="time" bindinput="bindKeyInput" />
+        </view>
+        <view class="inputBox">
+            赞助内容:
+            <input data-cls="content" bindinput="bindKeyInput" />
+        </view>
+    </form>
+</view>

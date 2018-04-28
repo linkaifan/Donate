@@ -1,0 +1,22 @@
+<!--pages/donate/me/me.wxml-->
+<view id="me">
+    <view class="infoBox">
+        <view class="imgBox">
+            <image src="{{userInfo.avatarUrl}}" class="img avator"></image>
+        </view>
+        <view class="T-name">
+            ID:{{userInfo.nickName}}
+        </view>
+        <view class="T-enterprise">
+            vtmer工作室
+        </view>
+        <view class="T-num">
+            完成次数：{{completeItems.num}}
+        </view>
+    </view>
+    <view class="btnBox">
+        <view data-i="0" bindtap="toPage" class="btn">已发布信息</view>
+        <view data-i="1" bindtap="toPage" class="btn">正在进行中</view>
+        <view data-i="2" bindtap="toPage" class="btn">已完成</view>
+    </view>
+</view>

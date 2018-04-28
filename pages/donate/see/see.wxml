@@ -1,0 +1,14 @@
+<!--pages/donate/see/see.wxml-->
+<view id="see">
+    <view class="bar">
+        <view class="iconBox">
+            <!-- <image></image> -->
+        </view>
+        <input class="search" placeholder="搜索" bindinput="bindKeyInput"/>
+    </view>
+    <view class="items">
+        <view class="itemBox" wx:for="{{items}}" wx:key="index">
+            {{item.enterprise}}
+        </view>
+    </view>
+</view>
