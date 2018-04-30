@@ -1,47 +1,69 @@
 <!-- pages/donate/publish/publish.wxml -->
 <view id="publish">
     <view>
-        <view class="imgBox">
-            <image src="{{userInfo.avatarUrl}}"></image>
+        <view>
+            <image src="{{userInfo.avatarUrl}}" class="img"></image>
         </view>
-        <text class="T-name">ID:{{userInfo.nickName}}</text>
+        <view class="T-name">{{userInfo.nickName}}</view>
     </view>
-    <form>
-        <view class="inputBox">
-            企业:
-            <input data-cls="enterprise" bindinput="bindKeyInput" />
+    <form class="form">
+        <view class="inputBox" wx:if="{{identity == 'enterprise'}}">
+            <label for="enterprise" class="lab">企业：</label>
+            <input data-cls="enterprise" bindinput="bindKeyInput" class="inp" />
+        </view>
+        <view class="inputBox" wx:if="{{identity == 'group'}}">
+            <label for="school" class="lab">学校：</label>
+            <input data-cls="school" bindinput="bindKeyInput" class="inp" />
+        </view>
+        <view class="inputBox" wx:if="{{identity == 'enterprise'}}">
+            <label for="brand"  class="lab">品牌：</label>
+            <input data-cls="brand" bindinput="bindKeyInput" class="inp"/>
+        </view>
+        <view class="inputBox" wx:if="{{identity == 'group'}}">
+            <label for="group"  class="lab">组织：</label>
+            <input data-cls="group" bindinput="bindKeyInput" class="inp"/>
         </view>
         <view class="inputBox">
-            品牌:
-            <input data-cls="brand" bindinput="bindKeyInput" />
+            <label for="contact" class="lab">联系人：</label>
+            <input data-cls="contact" bindinput="bindKeyInput" class="inp"/>
         </view>
         <view class="inputBox">
-            联系人:
-            <input data-cls="contact" bindinput="bindKeyInput" />
+            <label for="address" class="lab">地址：</label>
+            <!-- <input data-cls="address" bindinput="bindKeyInput" class="inp"/> -->
+            <picker mode="region" bindchange="bindAddressChange" 
+            value="{{PublishInfo.address}}" >
+                <view class="picker inp">
+                {{PublishInfo.address[0]}}，{{PublishInfo.address[1]}}，
+                {{PublishInfo.address[2]}}
+                </view>
+            </picker>
         </view>
         <view class="inputBox">
-            地址:
-            <input data-cls="address" bindinput="bindKeyInput" />
+            <label for="phone" class="lab">手机：</label>
+            <input data-cls="phone" bindinput="bindKeyInput" class="inp"/>
         </view>
         <view class="inputBox">
-            手机:
-            <input data-cls="phone" bindinput="bindKeyInput" />
+            <label for="qq" class="lab">QQ：</label>
+            <input data-cls="qq" bindinput="bindKeyInput" class="inp"/>
         </view>
-        <view class="inputBox">
-            QQ:
-            <input data-cls="qq" bindinput="bindKeyInput" />
+        <view class="inputBox" >
+            <label for="email" class="lab">邮箱：</label>
+            <input data-cls="email" bindinput="bindKeyInput" class="inp"/>
         </view>
-        <view class="inputBox">
-            邮箱:
-            <input data-cls="email" bindinput="bindKeyInput" />
+        <view class="inputBox" >
+            <label for="time" class="lab">时间范围：</label>
+            <picker mode="date" value="{{PublishInfo.time}}" 
+            start="2018-01-01" end="2030-01-01" 
+            bindchange="bindTimeChange">
+                <view class="picker inp">
+                {{PublishInfo.time}}
+                </view>
+            </picker>
         </view>
-        <view class="inputBox">
-            时间范围:
-            <input data-cls="time" bindinput="bindKeyInput" />
+        <view class="inputBox  tarea" >
+            <textarea data-cls="content" auto-height bindinput="bindKeyInput" 
+            placeholder="赞助内容" class="inp"/>
         </view>
-        <view class="inputBox">
-            赞助内容:
-            <input data-cls="content" bindinput="bindKeyInput" />
-        </view>
+        <button class="btn">OK</button>
     </form>
 </view>

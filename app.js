@@ -7,54 +7,54 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    let self = this
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        if (res.code) {
-          wx.getUserInfo({
-            success: (res1) => {             
-              wx.request({              
-                //拿token
-                url: config.service.loginUrl,
-                method: 'GET',
-                /* 如果是post传key-value的话需要加头请求
-                header: {
-                  "content-type": "application/x-www-form-urlencoded"
-                }, */
-                data: {
-                  code: res.code,
-                  nickname: res1.userInfo.nickName,
-                  avatar: res1.userInfo.avatarUrl
-                },
-                success: (res2) => {                                   
-                  self.globalData.userInfo = res1.userInfo
-                  if (res2.data.status_code == 200) {
-                    wx.setStorageSync('token', res2.data.data.token)
-                    wx.setStorageSync('openid', res2.data.data.openid)
-                  }
-                },
-                fail: (res) => {
-                  console.log(res)
-                },
-                complete: (res3) => {
-                  console.log(res3)
-                }
-              })
-            },
-            fail: () => {
-              wx.showModal({
-                title: '提示',
-                content: '请重新授权',
-                showCancel: false
-              })
-            }
-          })
+    // // 登录
+    // let self = this
+    // wx.login({
+    //   success: res => {
+    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+    //     if (res.code) {
+    //       wx.getUserInfo({
+    //         success: (res1) => {             
+    //           wx.request({              
+    //             //拿token
+    //             url: config.service.loginUrl,
+    //             method: 'GET',
+    //             /* 如果是post传key-value的话需要加头请求
+    //             header: {
+    //               "content-type": "application/x-www-form-urlencoded"
+    //             }, */
+    //             data: {
+    //               code: res.code,
+    //               nickname: res1.userInfo.nickName,
+    //               avatar: res1.userInfo.avatarUrl
+    //             },
+    //             success: (res2) => {                                   
+    //               self.globalData.userInfo = res1.userInfo
+    //               if (res2.data.status_code == 200) {
+    //                 wx.setStorageSync('token', res2.data.data.token)
+    //                 wx.setStorageSync('openid', res2.data.data.openid)
+    //               }
+    //             },
+    //             fail: (res) => {
+    //               console.log(res)
+    //             },
+    //             complete: (res3) => {
+    //               console.log(res3)
+    //             }
+    //           })
+    //         },
+    //         fail: () => {
+    //           wx.showModal({
+    //             title: '提示',
+    //             content: '请重新授权',
+    //             showCancel: false
+    //           })
+    //         }
+    //       })
 
-        }
-      }
-    })
+    //     }
+    //   }
+    // })
     // 获取用户信息
     wx.getSetting({
       success: res => {

@@ -12,7 +12,32 @@ Page({
     des:{},
     //完成
     completeItems:{
-      items:[],
+      items:[{
+        group:{
+          time:"2018-2-16",
+          title:"寻求营销大赛赞助",
+          content:"大家好我是你们的爸爸。",
+          school:'广东工业大学',
+          groupName:'维生数工作室',
+          address:'广东省广州市',
+          phone:'131433777',
+          avator:'../../../../assets/icon/me/test1.png',
+          money:25
+        },
+        enterprise:{
+          enterpriseName:'哔哩哔哩有限公司',
+          brand:'',      
+          contact:'',
+          address:'广东省广州市', 
+          phone:'12345657',   
+          qq:'',
+          email:'',
+          time:'2018-2-16',    
+          content:'社团你们好，我是你们的赞助爸爸。'  ,
+          avator:'../../../../assets/icon/me/test2.png' ,
+          money:25
+        }
+      }],
     },
     //发布
     publish:{
@@ -44,9 +69,32 @@ Page({
     },
     //进行中
     doing:{
-      group:{
-
-      }
+      items:[{
+        group:{
+          time:"2018-2-16",
+          title:"寻求营销大赛赞助",
+          content:"大家好我是你们的爸爸。",
+          school:'广东工业大学',
+          groupName:'维生数工作室',
+          address:'广东省广州市',
+          phone:'131433777',
+          avator:'../../../../assets/icon/me/test1.png',
+          money:25
+        },
+        enterprise:{
+          enterpriseName:'哔哩哔哩有限公司',
+          brand:'',      
+          contact:'',
+          address:'广东省广州市', 
+          phone:'12345657',   
+          qq:'',
+          email:'',
+          time:'2018-2-16',    
+          content:'社团你们好，我是你们的赞助爸爸。'  ,
+          avator:'../../../../assets/icon/me/test2.png' ,
+          money:25
+        }
+      }]
     }
   },
 

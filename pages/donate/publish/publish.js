@@ -6,26 +6,39 @@ Page({
    * 页面的初始数据
    */
   data: {
+    identity:'',
     userInfo:{},
-    PublishInfo:{
+    enterpriseInfo:{
       enterprise:'',
       brand:'',
       contact:'',
-      address:'',
+      address: ['广东省', '广州市', '番禺市'],
       phone:'',
       qq:'',
       email:'',
-      time:'',
+      time:'2016-09-01',
       content:''     
     },
+    groupInfo:{
+      school:'',
+      group:'',
+      contact:'',
+      address: ['广东省', '广州市', '番禺市'],
+      phone:'',
+      qq:'',
+      email:'',
+      time:'2016-09-01',
+      content:'' 
+    },
+    PublishInfo:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function (options) { 
     this.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
     })
   },
 
@@ -40,7 +53,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if (app.globalData) {
+      this.setData({
+        identity:app.globalData.identity
+      })
+      if (this.data.identity == 'enterprise') {
+        this.setData({
+          PublishInfo:this.data.enterpriseInfo
+        })        
+      }else if (this.data.identity == 'group') {
+        this.setData({
+          PublishInfo:this.data.groupInfo
+        })         
+      }
+    }
+    console.log(this.data.identity);  
   },
 
   /**
@@ -82,6 +109,18 @@ Page({
     let key = `PublishInfo.${e.target.dataset.cls}`   
     this.setData({
       [key]: e.detail.value
+    })
+  },
+  bindAddressChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      ['PublishInfo.address']: e.detail.value
+    })
+  },
+  bindTimeChange: function(e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      ['PublishInfo.time']: e.detail.value
     })
   },
 })

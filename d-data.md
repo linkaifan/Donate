@@ -84,30 +84,15 @@ items:[{
 ],
 //企业发布，是个数组来着
 items:[{
-    time:"2018-2-16",
-    title:"寻求营销大赛赞助",
-    content:"大家好我是你们的爸爸。",
-    school:'广东工业大学',
-    group:'维生数工作室',
-    address:'广东省广州市',
-    phone:'131433777'
-    <!-- 里面Key跟上面社团发布页面基本一致 -->
-    },{
-    time:"2018-2-17",
-    title:"寻求yinxiao大赛赞助",
-    content:"大家好我是你们的爸爸",
-    school:'广东工业大学',
-    group:'维生数工作室',
-    address:'广东省广州市',
-    phone:'131433777'
-    },{
-    time:"2018-2-18",
-    title:"寻求yinxiaoling大赛赞助",
-    content:"大家好我是你们的爸爸",
-    school:'广东工业大学',
-    group:'维生数工作室',
-    address:'广东省广州市',
-    phone:'131433777'
+    enterprise:'',//企业
+    brand:'',       //品牌
+    contact:'',//联系人
+    address:'', //地址
+    phone:'',   
+    qq:'',
+    email:'',
+    time:'',    //时间范围
+    content:''   //赞助内容
     }
 ],
 ```

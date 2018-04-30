@@ -2,6 +2,9 @@
 .img,.ib{
     display: inline-block;
 }
+.db{
+    display: block;
+}
 .nav{
     display: flex;
     font-size: 14px;
@@ -46,6 +49,11 @@
 .publish-info{
     width: 415rpx;
     overflow: hidden;
+}
+.publish-p{
+    font-size: 14px;
+    color: #866c6b;
+    margin-bottom: 15rpx;
 }
 .publish-right{
     width: 19rpx;
@@ -111,11 +119,105 @@
 
 /* 正在进行中 */
 .show-doing{
-    padding: 50rpx;
+    padding-top: 50rpx;
     background-color: #ebebeb;
 }
 .doing-box{
-    height: 380rpx;
+    background-color: #ebebeb;
+}
+.enterprise-box,
+.group-box{
+    position: relative;
+    display: flex;
+    align-self: center;
+    padding: 50rpx 35rpx;
+    background-color: #fff;
+    margin-bottom: 50rpx;
+}
+.big-icon{
+    width: 64rpx;
+    height: 64rpx;
+    position: absolute;
+    top: -32rpx;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.doing-left{
+    width: 220rpx;
+}
+.sm-icon{
+    width: 20rpx;
+    height: 20rpx;
+    margin-right: 5rpx;
+}
+.avator{
+    width: 145rpx;
+    height: 145rpx;
+    margin: 0 0 30rpx 35rpx;
+}
+.doing-t{
+    color: #866c6b;
+    font-size: 11px;
+}
+.content-t{
+    color: #866c6b;
+    font-size: 12px;
+}
+.doing-cotent{
+    font-size: 12px;
+    color: #866c6b;
+}
+.doing-right{
+    margin-left: 30rpx;
+}
+/* 已完成 */
+.show-complete{
+    padding-top: 30rpx;
+    background-color: #ebebeb;
+}
+.com-group,.com-enterprise{
+    height: 160rpx;
+    margin-bottom: 10rpx;
     background-color: #fff;
     display: flex;
+    padding: 35rpx;
+    box-sizing: border-box;
+}
+.com-avator{
+    width: 86rpx;
+    height: 86rpx;
+}
+.com-icon{
+    margin-left: 50rpx;
+}
+.comicon-first{
+    margin: 15rpx 0;
+}
+.comicon-first,.comicon-second{
+    width: 500rpx;
+    font-size: 12px;
+    color: #866c6b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.com-content{
+    margin-top: 30rpx;
+    padding: 30rpx 35rpx;
+    background-color: #fff;
+    font-size: 14px;
+}
+.com-h{
+    text-align: center;
+    width: 180rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    margin: 0 auto;
+    color: #fff;
+    background-color: #866c6b;
+    border-radius: 8px;
+}
+.com-t{
+    color: #866c6b;
+    margin-top: 20rpx;
 }

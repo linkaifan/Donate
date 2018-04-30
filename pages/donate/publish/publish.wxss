@@ -1,1 +1,49 @@
 /* pages/donate/publish/publish.wxss */
+#publish{
+    padding: 100rpx;
+}
+.img{
+    width: 190rpx;
+    height: 190rpx;
+    margin: 0 auto;
+    display: block;
+}
+.T-name{
+    text-align: center;
+    color: rgb(134, 108, 107);
+    font-size: 12px;
+    margin-top: 15rpx;
+    margin-bottom: 30rpx;
+}
+.publish-form{
+    margin-top: 50rpx;
+}
+.inputBox{
+    display: flex;
+    align-self: center;
+    border-top: 2px solid #ebebeb;
+    color: rgb(134, 108, 107);
+    font-size: 14px;
+    padding: 30rpx 0;
+}
+.lab,.inp{
+    line-height: 50rpx;
+    height: 50rpx;
+}
+.inp{
+    flex-grow: 1;
+}
+.tarea{
+    border-bottom: 2px solid #ebebeb; 
+}
+.btn{
+    width: 235rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    background-color: #866c6b;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 8px;
+    margin: 60rpx auto;
+    text-align: center;
+}
