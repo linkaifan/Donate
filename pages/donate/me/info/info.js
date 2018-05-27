@@ -1,12 +1,15 @@
+const app = getApp()
+const config = require('../../config.js')
 // pages/donate/me/info/info.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    token:'',
+    userInfo:{},
     //显示哪个板块
-    curIndex:-1,
+    curIndex:1,
     // 判断是否点击查看具体项目
     isShowDesInfo:false,
     des:{},
@@ -95,23 +98,35 @@ Page({
           money:25
         }
       }]
-    }
+    },
+    ongoings:null,
+    postings:null,
+    dones:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let self = this
+    console.log('info.onload');
+    
     this.setData({    
-      curIndex: options.i    
+      userInfo: app.globalData.userInfo,
+      token : wx.getStorageSync('token') 
     }) 
+    //获取正在进行数据,存在ongings里，再根据type分出en和stu
+    this.getData(config.service.ongoing,'ongoings')
+    //获取已发布数据,存在postings里
+    this.getData(config.service.posting,'postings')
+    //获取正在进行数据,存在dones里
+    // this.getData(config.service.done,'dones')
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
@@ -156,12 +171,36 @@ Page({
   
   },
   // 自定义函数
+  /*获取正在进行，已完成，已发布。
+  url：ongoing/posting/done[config], objStr:ongings/postings/dones*/
+  getData(url,objStr){
+    let self = this   
+    wx.request({
+      url: url,
+      method: 'POST',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        token:this.data.token
+      },
+      success: function (res) {
+        self.setData({
+          [objStr]:res.data.data
+        })
+      },
+      fail: function(err) {
+        console.log(err);        
+      }
+    })
+  },
+  //nav，点击切换相应内容，判断是否需要获取相应数据
   changeCurIndex(e){  
     let i = e.currentTarget.dataset.i
     this.setData({
       isSelect:false,
       curIndex:i
-    })            
+    })          
   },
   ShowDesInfo(e){
     let index = e.currentTarget.dataset.info
@@ -174,5 +213,6 @@ Page({
     this.setData({
       isShowDesInfo:false
     })
-  }
+  },
+
 })

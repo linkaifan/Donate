@@ -1,25 +1,27 @@
 <!-- pages/donate/home/home.wxml -->
 <view id="home">
-    <view class="head"></view>
-    <view class="intro"></view>
-    <view class="nav">
-        <view class="toEnter" bindtap="toRank" data-id="enterprise">
-            <view class="iconBox first">
-                <image src="../../../assets/icon/home/head.png" class="icon"></image>
-            </view>
-            <text>我是企业</text>
-            <view class="right-iconBox">
-                <image src="../../../assets/icon/home/right.png" class="right-icon"></image>
+    <view class="content">
+        <view class="intro">
+            <image src="../../../assets/icon/home/logo.png" class="logo"></image>
+            <view class="intro-text">
+                <view class="intro-t">小企+</view>
+                <view>是一款基于校企合作的赞助社区小程序，</view>
+                <view class="intro-t">专注于建立一个学校团体与企业商家之间 </view>
+                <view>合作交流的平台。</view>
+                <view class="vtmer">@维生数工作室</view>
+                <button open-type="getUserInfo" bindgetuserinfo="login"
+                 wx:if="{{!userInfo}}">点击授权
+                </button>
             </view>
         </view>
-        <view class="line"></view>
-        <view class="toSch" bindtap="toRank" data-id="group">
-            <view class="iconBox second">
-                <image src="../../../assets/icon/home/tuan.png" class="icon"></image>
+        <view class="nav" wx:if="{{userInfo}}">
+            <view class="toEnter" bindtap="toRank" data-id="enterprise">
+                <image src="../../../assets/icon/home/qiye.png" class="icon"></image>
+                <text>企 业</text>
             </view>
-            <text>我是社团</text>
-            <view class="right-iconBox">
-                <image src="../../../assets/icon/home/right.png" class="right-icon"></image>
+            <view class="toSch" bindtap="toRank" data-id="group">
+                <image src="../../../assets/icon/home/shetuan.png" class="icon"></image>
+                <text>社 团</text>
             </view>
         </view>
     </view>

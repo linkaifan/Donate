@@ -7,25 +7,29 @@ Page({
   data: {
     search:'',
     items:[{
-      enterprise:'网易云音乐',
-      brand:'',
+      enterpriseName:'网易云音乐',
+      brand:'',      
       contact:'',
-      address:'',
-      phone:'',
+      address:'广东省广州市', 
+      phone:'12345657',   
       qq:'',
       email:'',
-      time:'',
-      content:'123'  
+      time:'2018-2-16',    
+      content:'社团你们好，我是你们的赞助爸爸。'  ,
+      avator:'../../../../assets/icon/me/test2.png' ,
+      money:25
     },{
-      enterprise:'vtmer',
-      brand:'',
+      enterpriseName:'哔哩哔哩有限公司',
+      brand:'',      
       contact:'',
-      address:'',
-      phone:0,
-      qq:0,
+      address:'广东省广州市', 
+      phone:'12345657',   
+      qq:'',
       email:'',
-      time:'',
-      content:'456'  
+      time:'2018-2-16',    
+      content:'社团你们好，我是你们的赞助爸爸。'  ,
+      avator:'../../../../assets/icon/me/test2.png' ,
+      money:25
     }]
   },
 

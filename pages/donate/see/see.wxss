@@ -1,1 +1,62 @@
 /* pages/donate/see/see.wxss */
+.t-center{
+    text-indent: 180rpx;
+}
+.bar{
+    display: flex;
+    align-items: center;
+    height: 120rpx;
+    padding: 0 50rpx;
+}
+.search-icon{
+    width: 43rpx;
+    height: 43rpx;
+    margin-right: 50rpx;
+}
+.search{
+    padding: 10rpx 40rpx;
+    font-size: 13px;
+    border-radius: 55px;
+    /* border: 1px solid #ebebeb; */
+    background-color: #ebebeb;
+    flex-grow: 1;
+}
+.items{
+    background-color: #ebebeb;
+    padding: 80rpx;
+}
+.itemBox{
+    margin-bottom: 65rpx;
+    position: relative;
+    font-size: 13px;
+    background-color: #fff;
+    padding: 40rpx 40rpx 40rpx 100rpx;
+    border-radius: 5px;
+    box-shadow: -5px -5px 25px #c0c0c0;
+}
+.item-icon{
+    position: absolute;
+    width: 140rpx;
+    height: 140rpx;
+    top: -70rpx;
+    left: -40rpx;
+}
+.sm-p{
+    display: flex;
+    font-size: 12px;
+    justify-content: space-between;
+    width: 80%;
+}
+.name{
+    font-size: 16px;
+}
+.weight{
+    font-weight: 600;
+}
+.sm-icon{
+    width: 12rpx;
+    height: 11rpx;
+}
+.item-p{
+    margin-bottom: 20rpx;
+}

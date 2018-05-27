@@ -1,14 +1,29 @@
 <!--pages/donate/see/see.wxml-->
 <view id="see">
     <view class="bar">
-        <view class="iconBox">
-            <!-- <image></image> -->
-        </view>
-        <input class="search" placeholder="搜索" bindinput="bindKeyInput"/>
+        <image class="search-icon" 
+        src="../../../assets/icon/see/search.png"></image>
+        <input class="search" placeholder="搜索" 
+        placeholder-class="t-center" bindinput="bindKeyInput"/>
     </view>
     <view class="items">
         <view class="itemBox" wx:for="{{items}}" wx:key="index">
-            {{item.enterprise}}
+            <image class="item-icon" 
+            src="../../../assets/icon/see/big-icon.png"></image>
+            <view class="name weight item-p">{{item.enterpriseName}}</view>
+            <view class="sm-p item-p">
+                <text>{{item.phone}}</text>
+                <text>{{item.address}}</text>
+                <view>
+                    <image class="sm-icon" 
+                    src="../../../assets/icon/see/money.png"></image>
+                    {{item.money}}
+                </view>
+            </view>
+            <view class="item-p">
+                <text class="weight">信息：</text>
+                <text>{{item.content}}</text>
+            </view>
         </view>
     </view>
 </view>

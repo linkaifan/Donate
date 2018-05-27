@@ -1,11 +1,41 @@
 /* pages/donate/me/info/info.wxss */
+#info{
+    background-color: #ebebeb;
+    height: 100vh;
+    font-family: "PingFang";
+}
 .img,.ib{
     display: inline-block;
 }
 .db{
     display: block;
 }
+/* head */
+.head{
+    display: flex;
+    background-color: #0d548c;
+    align-items: center;
+    height: 20.2vh;
+}
+.head-avator{
+    border-radius: 50%;
+    width: 145rpx;
+    height: 145rpx;
+    margin: 0 66rpx;
+}
+.T-name{
+    color: #fff;
+    font-size: 16px;
+}
+.head-text{
+    font-family: "PingFang";
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 14px;
+}
+  
+/* nav  */
 .nav{
+    background-color: #fff;
     display: flex;
     font-size: 14px;
     height: 65rpx;
@@ -16,34 +46,34 @@
     text-align: center;
 }
 .active{
-    border-bottom: 2px solid #866c6b;
+    border-bottom: 2px solid #0d548c;
 }
 /* 已发布 */
 .show-publish{
+    color: rgb(88, 88, 88);
     background-color: #ebebeb;
-    padding-top: 20rpx;
+    padding-top: 15rpx;
 }
 .publish-box{
     margin-bottom: 20rpx;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 245rpx;
+    height: 14.2vh;
     background: #fff;
 }
 .publish-index{
-    width: 90rpx;
-    height: 90rpx;
+    width: 75rpx;
+    height: 75rpx;
     border-radius: 50%;
-    line-height: 90rpx;
+    line-height: 75rpx;
     text-align: center;
-    color: #866c6b;
 }
 .odd{
-    border: 3px solid #866c6b;
+    border: 3px solid #0d548c;
 }
 .even{
-    background-color: #866c6b;
+    background-color: #0d548c;
     color: white;
 }
 .publish-info{
@@ -52,8 +82,12 @@
 }
 .publish-p{
     font-size: 14px;
-    color: #866c6b;
-    margin-bottom: 15rpx;
+    margin-bottom: 5rpx;
+}
+.publish-content{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 }
 .publish-right{
     width: 19rpx;
@@ -67,18 +101,17 @@
     background-color: rgba(223, 223, 223, 0.4);
     top: 0;left: 0;
     z-index: 1000;
-
 }
 .des-info{
+    color: rgb(88, 88, 88);
     position: relative;
     width: 560rpx;
-    height: 1000rpx;
+    height: 85vh;
     box-sizing: border-box;
     margin: 40rpx auto 0 auto;
     background-color: #fff;
     text-align: left;
-    color:rgb(134, 108, 107);
-    font-size: 14px;
+    font-size: 13px;
     padding: 0 75rpx;
 }
 /* 设置模糊 */
@@ -89,7 +122,7 @@
     text-align: center;
     height: 130rpx;
     line-height: 130rpx;
-    padding-top: 45rpx;
+    padding-top: 30rpx;
 }
 .info-icon{
     width: 54rpx;
@@ -99,12 +132,12 @@
     font-weight: 600;
 }
 .des-t{
-    margin-bottom: 20rpx;
+    margin-bottom: 8rpx;
 }
 .des-btn{
     text-align: center;
     border-radius: 6px;
-    background-color: rgb(134, 108, 107);
+    background-color: #0d548c;
     box-shadow: 0px 1px 1.9px 0.1px rgba(0, 0, 0, 0.2),inset 0px 1px 0.99px 0.01px rgba(0, 0, 0, 0.23);
     font-size: 16px;
     color: rgb(255, 255, 255);  
@@ -115,12 +148,12 @@
     bottom: 75rpx;
     left: 50%;
     transform: translate(-50%,0); 
-}
-
+} 
 /* 正在进行中 */
 .show-doing{
-    padding-top: 50rpx;
+    padding-top: 15rpx;
     background-color: #ebebeb;
+    color: rgb(88, 88, 88); 
 }
 .doing-box{
     background-color: #ebebeb;
@@ -130,9 +163,9 @@
     position: relative;
     display: flex;
     align-self: center;
-    padding: 50rpx 35rpx;
+    padding: 50rpx 45rpx;
     background-color: #fff;
-    margin-bottom: 50rpx;
+    margin-bottom: 15rpx;
 }
 .big-icon{
     width: 64rpx;
@@ -143,7 +176,7 @@
     transform: translate(-50%,0);
 }
 .doing-left{
-    width: 220rpx;
+    width: 220rpx;    
 }
 .sm-icon{
     width: 20rpx;
@@ -156,23 +189,21 @@
     margin: 0 0 30rpx 35rpx;
 }
 .doing-t{
-    color: #866c6b;
     font-size: 11px;
 }
 .content-t{
-    color: #866c6b;
     font-size: 12px;
 }
 .doing-cotent{
-    font-size: 12px;
-    color: #866c6b;
+    font-size: 12px;     
 }
 .doing-right{
     margin-left: 30rpx;
 }
 /* 已完成 */
 .show-complete{
-    padding-top: 30rpx;
+    color: rgb(88, 88, 88);
+    padding-top: 15rpx;
     background-color: #ebebeb;
 }
 .com-group,.com-enterprise{
@@ -196,13 +227,12 @@
 .comicon-first,.comicon-second{
     width: 500rpx;
     font-size: 12px;
-    color: #866c6b;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 .com-content{
-    margin-top: 30rpx;
+    margin-top: 15rpx;
     padding: 30rpx 35rpx;
     background-color: #fff;
     font-size: 14px;
@@ -214,10 +244,9 @@
     line-height: 50rpx;
     margin: 0 auto;
     color: #fff;
-    background-color: #866c6b;
+    background-color: #0d548c;
     border-radius: 8px;
 }
 .com-t{
-    color: #866c6b;
     margin-top: 20rpx;
 }

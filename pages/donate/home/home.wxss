@@ -1,61 +1,66 @@
 /* pages/donate/home/home.wxss */
 #home{
     position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('http://images.nancelglap.cn/develop/sponsorBg.png')
 }
 image{
     display: block;
 }
-.head{
-    height: 200rpx;
+.content{
+    box-sizing: border-box;
+    width: 85vw;
+    height: 90vh;
+    background-color: #fff;
+    padding: 100rpx 0;
 }
-.intro{
-    height: 400rpx;
-    margin-bottom: 30rpx;
+.intro-text{
+    font-family: "PingFang";
+    color: rgb(88, 88, 88);
+    font-weight: 600;
+    text-align: center;
+    font-size: 12px;
+}
+.intro-t{
+    margin: 35rpx 0;
+}
+.vtmer{
+    font-size: 10px;
+    margin: 35rpx 0;
+    font-weight: 500;
+}
+.logo{
+    width: 170rpx;
+    margin: 0 auto;
+    height: 178rpx;
+    box-sizing: border-box;
+    margin-bottom: 50rpx;
 }
 .nav{
-    position: fixed;
-    bottom: 0;
+    display: flex;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 160rpx;
+    justify-content: space-between;
+    padding: 0 60rpx;
 }
 .toSch,.toEnter{
-    height: 160rpx;
-    line-height: 160px;
-    display: flex;
-    justify-content: space-around;
-    align-items:center;
+    width: 240rpx;
+    height: 100rpx;
+    border-radius: 5px;
+    background-color: #0d548c;
+}
+.icon{
+    width: 38rpx;
+    height: 33rpx;
+    margin: 20rpx auto 5rpx auto;
 }
 /* .toSch text,.toEnter text{
 } */
-.line{
-    width: 730rpx;
-    margin: 0 auto;
-    background-color: #ebebeb;
-    height: 5px;
-}
-.iconBox{
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    border-radius: 50%;
-    width: 106rpx;
-    height: 106rpx;
-}
-.iconBox image{
-    width: 65rpx;
-    height: 60rpx;
-}
-.first{
-    background-color: #866c6b;
-}
-.second{
-    border: 1px solid  #866c6b;
-}
-.right-iconBox{
-    display: flex;
-    align-items:center;
-    justify-content:center;
-}
-.right-iconBox,
-.right-iconBox image{
-    width: 43rpx;
-    height: 40rpx;
-}
+
+  

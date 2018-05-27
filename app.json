@@ -12,33 +12,8 @@
   "window": {
     "backgroundColor":"#ebebeb",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#866c6b",
+    "navigationBarBackgroundColor": "#0d548c",
     "navigationBarTitleText": "Donate",
     "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "backgroundColor":"#866c6b",
-    "list": [
-      {
-        "pagePath": "pages/donate/home/home",
-        "text": "主页"
-      },
-      {
-        "pagePath": "pages/donate/rank/rank",
-        "text": "排行"
-      },
-      {
-        "pagePath": "pages/donate/me/me",
-        "text": "个人中心"
-      },
-      {
-        "pagePath": "pages/donate/publish/publish",
-        "text": "发布"
-      },
-      {
-        "pagePath": "pages/donate/see/see",
-        "text": "查看"
-      }
-    ]
   }
 }

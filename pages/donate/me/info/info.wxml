@@ -1,206 +1,205 @@
 <!-- pages/donate/me/info/info.wxml -->
 <view id="info">
-		<view class="nav {{isShowDesInfo?'blur':''}}">
-				<view class="publish {{curIndex == 0 ?'active':''}}" bindtap="changeCurIndex" data-i="0">
-						已发布信息
-				</view>
-				<view class="doing {{curIndex == 1 ?'active':''}}" bindtap="changeCurIndex" data-i="1">
-						正在进行中
-				</view>
-				<view class="complete {{curIndex == 2 ?'active':''}}" bindtap="changeCurIndex" data-i="2">
-						已完成
-				</view>
-		</view>
-		<view class="content {{isShowDesInfo?'blur':''}}" >
-				<view class="show-publish show" hidden="{{!(curIndex == 0)}}">
-						<view class="publish-box" wx:for="{{publish.items}}" data-cls="publish" wx:key="index" data-info="{{index}}" bindtap="ShowDesInfo">
-								<view class="publish-index {{(index+1)%2 !== 0? 'odd':'even'}}">{{index+1}}</view>
-								<view class="publish-info">
-										<view class="publish-time publish-p">{{item.time}}</view>
-										<view class="publish-title publish-p">{{item.title}}</view>
-										<view class="publish-content publish-p">{{item.content}}</view>
-								</view>
-								<image src="../../../../assets/icon/me/right.png" class="publish-right ib"></image>
-						</view>
-				</view>
-				<view class="show-doing show" hidden="{{!(curIndex == 1)}}">
-						<view class="doing-box" wx:for="{{doing.items}}" wx:key="index">
-								<view class="group-box" data-cls="doinggroup" bindtap="ShowDesInfo">
-										<image class="ib big-icon" src="../../../../assets/icon/me/group.png">
-										</image>
-										<view class="doing-left">
-											<image class="db avator" src="{{item.group.avator}}"></image>		
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/group2.png">
-												</image>
-												{{item.group.groupName}}
-											</view>	
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/school.png">
-												</image>
-												{{item.group.school}}
-											</view>
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/phone.png">
-												</image>
-												{{item.group.phone}}
-											</view>
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/address.png">
-												</image>
-												{{item.group.address}}
-											</view>	
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/money.png">
-												</image>
-												{{item.group.money}}
-											</view>							
+	<view class="head">
+		<view class="imgBox">
+				<image src="{{userInfo.avatarUrl}}" class="img head-avator"></image>
+		</view>	
+		<view class="head-text">
+			<view class="T-name">
+					ID:{{userInfo.nickName}}
+			</view>
+			<view class="T-enterprise">
+					vtmer工作室
+			</view>
+			<view class="T-num">
+					完成次数：{{completeItems.num}}
+			</view>	
+		</view>		
+	</view>
+	<view class="nav {{isShowDesInfo?'blur':''}}">
+			<view class="publish {{curIndex == 0 ?'active':''}}" bindtap="changeCurIndex" data-i="0">
+					已发布信息
+			</view>
+			<view class="doing {{curIndex == 1 ?'active':''}}" bindtap="changeCurIndex" data-i="1">
+					正在进行中
+			</view>
+			<view class="complete {{curIndex == 2 ?'active':''}}" bindtap="changeCurIndex" data-i="2">
+					已完成
+			</view>
+	</view>
+	<view class="content {{isShowDesInfo?'blur':''}}" >
+			<view class="show-publish show" hidden="{{!(curIndex == 0)}}">
+					<view class="publish-box" wx:for="{{postings}}" data-cls="publish" wx:key="index" data-info="{{index}}" bindtap="ShowDesInfo">
+							<view class="publish-index {{(index+1)%2 !== 0? 'odd':'even'}}">{{index+1}}</view>
+							<view class="publish-info">
+									<view class="publish-time publish-p">发布时间：{{item.begin}}</view>
+									<!-- <view class="publish-title publish-p">{{item.title}}</view> -->
+									<view class="publish-content publish-p">内容：{{item.content}}</view>
+							</view>
+							<image src="../../../../assets/icon/me/right.png" class="publish-right ib"></image>
+					</view>
+			</view>
+			<view class="show-doing show" hidden="{{!(curIndex == 1)}}">
+					<view class="doing-box" wx:for="{{ongoings}}" wx:key="index">
+							<view class="group-box" data-cls="doinggroup" bindtap="ShowDesInfo">
+									<view class="doing-left">
+										<image class="db avator" src="{{item.en_avatar}}"></image>		
+										<view class="doing-t">
+											<image class="ib sm-icon" src="../../../../assets/icon/me/group2.png">
+											</image>
+											{{item.en_nickname}}
+										</view>	
+										<view class="doing-t">
+											<image class="ib sm-icon" src="../../../../assets/icon/me/school.png">
+											</image>
+											{{item.school}}
 										</view>
-										<view class="doing-right">
-											<view class="doing-time ">
-												<text class="weight content-t">发布时间:{{item.group.time}}</text>													
-											</view>
-											<view class="doing-cotent ">
-												<view class="weight content-t">发布内容:【寻求赞助】</view>	
-												{{item.group.content}}
-											</view>
+										<view class="doing-t">
+											<image class="ib sm-icon" src="../../../../assets/icon/me/address.png">
+											</image>
+											{{item.city}}{{item.district}}
+										</view>	
+										<view class="doing-t">
+											<image class="ib sm-icon" src="../../../../assets/icon/me/money.png">
+											</image>
+											25
+										</view>							
+									</view>
+									<view class="doing-right">
+										<view class="doing-time ">
+											<text class="weight content-t">发布时间:{{item.created_at}}</text>													
 										</view>
-								</view>
-								<view class="enterprise-box" data-cls="doingenterprise" bindtap="ShowDesInfo">
-										<image class="ib big-icon" src="../../../../assets/icon/me/entr.png">
-										</image>
-										<view class="doing-left">
-											<image class="db avator" src="{{item.enterprise.avator}}"></image>	
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/entr2.png">
-												</image>
-													{{item.enterprise.enterpriseName}}
-											</view>	
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/phone.png">
-												</image>
-												{{item.enterprise.phone}}
-											</view>
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/address.png">
-												</image>
-												{{item.enterprise.address}}
-											</view>	
-											<view class="doing-t">
-												<image class="ib sm-icon" src="../../../../assets/icon/me/money.png">
-												</image>
-												{{item.enterprise.money}}
-											</view>																				
+										<view class="doing-cotent ">
+											<view class="weight content-t">发布内容:【寻求赞助】</view>	
+											{{item.content}}
 										</view>
-										<view class="doing-right">
-											<view class="doing-time ">
-												<text class="weight content-t">发布时间:{{item.enterprise.time}}</text>													
-											</view>
-											<view class="doing-cotent ">
-												<view class="weight content-t">发布内容:</view>	
-												{{item.enterprise.content}}
-											</view>
-										</view>										
+									</view>
+							</view>
+							<view class="enterprise-box" data-cls="doingenterprise" bindtap="ShowDesInfo">
+									<!-- <image class="ib big-icon" src="../../../../assets/icon/me/entr.png"> 
+									</image>-->
+									<view class="doing-left">
+										<image class="db avator" src="{{item.partner_avatar}}"></image>	
+										<view class="doing-t">
+											<image class="ib sm-icon" src="../../../../assets/icon/me/entr2.png">
+											</image>
+												{{item.partner_nickname}}
+										</view>	
+										<view class="doing-t">
+											<image class="ib sm-icon" src="../../../../assets/icon/me/money.png">
+											</image>
+											25
+										</view>																				
+									</view>
+									<view class="doing-right">
+										<view class="doing-time ">
+											<text class="weight content-t">发布时间:{{item.created_at}}</text>													
+										</view>
+										<view class="doing-cotent ">
+											<view class="weight content-t">发布内容:</view>	
+											{{item.content}}
+										</view>
+									</view>										
+							</view>
+					</view>
+			</view>
+			<view class="show-complete show" hidden="{{!(curIndex == 2)}}">
+				<view class="complete-box" wx:for="{{doing.items}}" wx:key="index">
+					<view class="com-group">
+						<image class="com-avator" src="../../../../assets/icon/me/test1.png"></image>
+						<view class="com-icon">
+							<view class="comicon-first">
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/group2.png" class="sm-icon"></image>
+									{{item.group.groupName}}
 								</view>
-						</view>
-				</view>
-				<view class="show-complete show" hidden="{{!(curIndex == 2)}}">
-					<view class="complete-box" wx:for="{{doing.items}}" wx:key="index">
-						<view class="com-group">
-							<image class="com-avator" src="../../../../assets/icon/me/test1.png"></image>
-							<view class="com-icon">
-								<view class="comicon-first">
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/group2.png" class="sm-icon"></image>
-										{{item.group.groupName}}
-									</view>
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/school.png" class="sm-icon"></image>
-										{{item.group.school}}
-									</view>
-								</view>
-								<view class="comicon-second">
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/phone.png" class="sm-icon"></image>
-										{{item.group.phone}}
-									</view>
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/address.png" class="sm-icon"></image>
-										{{item.group.address}}
-									</view>
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/money.png" class="sm-icon"></image>
-										{{item.group.money}}
-									</view>									
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/school.png" class="sm-icon"></image>
+									{{item.group.school}}
 								</view>
 							</view>
-						</view>
-						<view class="com-enterprise">
-							<image class="com-avator" src="../../../../assets/icon/me/test2.png"></image>
-							<view class="com-icon">
-								<view class="comicon-first">
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/entr2.png" class="sm-icon"></image>
-										{{item.enterprise.enterpriseName}}
-									</view>
+							<view class="comicon-second">
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/phone.png" class="sm-icon"></image>
+									{{item.group.phone}}
 								</view>
-								<view class="comicon-second">
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/phone.png" class="sm-icon"></image>
-										{{item.enterprise.phone}}
-									</view>
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/address.png" class="sm-icon"></image>
-										{{item.enterprise.address}}
-									</view>
-									<view class="comicon-t">
-										<image src="../../../../assets/icon/me/money.png" class="sm-icon"></image>
-										{{item.enterprise.money}}
-									</view>									
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/address.png" class="sm-icon"></image>
+									{{item.group.address}}
 								</view>
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/money.png" class="sm-icon"></image>
+									{{item.group.money}}
+								</view>									
 							</view>
-						</view>
-						<view class="com-content">
-							<view class="com-h">合作项目</view>
-							<view class="com-t">结束时间:{{item.group.time}}</view>
-							<view class="com-t">项目内容:{{item.group.content}}</view>
 						</view>
 					</view>
+					<view class="com-enterprise">
+						<image class="com-avator" src="../../../../assets/icon/me/test2.png"></image>
+						<view class="com-icon">
+							<view class="comicon-first">
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/entr2.png" class="sm-icon"></image>
+									{{item.enterprise.enterpriseName}}
+								</view>
+							</view>
+							<view class="comicon-second">
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/phone.png" class="sm-icon"></image>
+									{{item.enterprise.phone}}
+								</view>
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/address.png" class="sm-icon"></image>
+									{{item.enterprise.address}}
+								</view>
+								<view class="comicon-t">
+									<image src="../../../../assets/icon/me/money.png" class="sm-icon"></image>
+									{{item.enterprise.money}}
+								</view>									
+							</view>
+						</view>
+					</view>
+					<view class="com-content">
+						<view class="com-h">合作项目</view>
+						<view class="com-t">结束时间:{{item.group.time}}</view>
+						<view class="com-t">项目内容:{{item.group.content}}</view>
+					</view>
 				</view>
-		</view>
-		<view class="wrap" hidden="{{!isShowDesInfo}}">
-				<view class="des-info">
-						<view class="des-iconBox">
-								<image src="../../../../assets/icon/me/info.png" class="info-icon ib" 
-								bindtap="closeDesInfo" />
-						</view>
-						<view class="des-time weight des-t">{{des.time}}</view>
-						<view class="des-address des-t">
-								<text class="weight">地区:</text>
-								{{des.address}}
-						</view>
-						<view class="des-school des-t">
-								<text class="weight">学校:</text>
-								{{des.school}}
-						</view>
-						<view class="des-group des-t">
-								<text class="weight">组织:</text>
-								{{des.group}}
-						</view>
-						<view class="des-title des-t">
-								<text class="weight">主题:</text>
-								{{des.title}}
-						</view>
-						<view class="des-content des-t">
-								<view class="weight">发布内容:</view>
-								{{des.content}}
-						</view>
-						<view class="des-phone des-t">
-								<text class="weight ib">联系方式:</text>
-								<view>微信：{{des.phone}}</view>
-								<view>电话：{{des.phone}}</view>
-						</view>
-						<view class="des-btn">修改信息</view>
-				</view>
-		</view>
+			</view>
+	</view>
+	<view class="wrap" hidden="{{!isShowDesInfo}}">
+			<view class="des-info">
+					<view class="des-iconBox">
+							<image src="../../../../assets/icon/me/info.png" class="info-icon ib" 
+							bindtap="closeDesInfo" />
+					</view>
+					<view class="des-time weight des-t">{{des.time}}</view>
+					<view class="des-address des-t">
+							<text class="weight">地区:</text>
+							{{des.address}}
+					</view>
+					<view class="des-school des-t">
+							<text class="weight">学校: </text>
+							{{des.school}}
+					</view>
+					<view class="des-group des-t">
+							<text class="weight">组织: </text>
+							{{des.group}}
+					</view>
+					<view class="des-title des-t">
+							<text class="weight">主题: </text>
+							{{des.title}}
+					</view>
+					<view class="des-content des-t">
+							<view class="weight">发布内容: </view>
+							{{des.content}}
+					</view>
+					<view class="des-phone des-t">
+							<text class="weight ib">联系方式: </text>
+							<view>微信：{{des.phone}}</view>
+							<view>电话：{{des.phone}}</view>
+					</view>
+					<view class="des-btn">修改信息</view>
+			</view>
+	</view>
 </view>

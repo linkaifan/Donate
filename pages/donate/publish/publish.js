@@ -1,5 +1,6 @@
 // pages/donate/publish/publish.js
 const app = getApp()
+const config = require('../config.js')
 Page({
 
   /**
@@ -9,26 +10,31 @@ Page({
     identity:'',
     userInfo:{},
     enterpriseInfo:{
-      enterprise:'',
+      school:'',
       brand:'',
-      contact:'',
-      address: ['广东省', '广州市', '番禺市'],
+      name:'',//联系人
+      place:['广东省','广州市','番禺市'],
       phone:'',
       qq:'',
-      email:'',
-      time:'2016-09-01',
-      content:''     
+      wechat:'',
+      end:'2020-09-01',
+      content:'',
+      begin:'2017-09-01',
+      token:'' ,
     },
     groupInfo:{
       school:'',
       group:'',
-      contact:'',
-      address: ['广东省', '广州市', '番禺市'],
+      name:'',//联系人
+      place:['广东省','广州市','番禺市'],
       phone:'',
       qq:'',
-      email:'',
-      time:'2016-09-01',
-      content:'' 
+      wechat:'',
+      end:'2020-09-01',
+      content:'',
+      begin:'2017-09-01',
+      token:'',
+      category:''
     },
     PublishInfo:{}
   },
@@ -53,7 +59,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (app.globalData) {
+    if (app.globalData.identity) {
       this.setData({
         identity:app.globalData.identity
       })
@@ -114,13 +120,63 @@ Page({
   bindAddressChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      ['PublishInfo.address']: e.detail.value
+      ['PublishInfo.place']: e.detail.value,
     })
   },
   bindTimeChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      ['PublishInfo.time']: e.detail.value
+      ['PublishInfo.end']: e.detail.value
     })
   },
+  //提交
+  submit(){
+    let self = this 
+    this.setData({
+      ['PublishInfo.token'] : wx.getStorageSync('token') 
+    })   
+    if (this.data.identity == 'group') {
+      this.postData(config.service.groupPost)
+    } else if (this.data.identity == 'enterprise') {
+      this.postData(config.service.enPost)
+    }  
+           
+  },
+  //获取开始时间
+  getTime(){
+    let date = new Date();
+    let year = date.getFullYear()  
+    let month = date.getMonth() + 1  
+    let day = date.getDate()
+    let begin = `${year}-${month}-${day}`
+    return begin
+  },
+  postData(url){
+    wx.request({
+      url: url,
+      method: 'POST',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      data:this.data.PublishInfo,
+      success: function (res) {
+        console.log(res);
+        if (res.statusCode === 200) {
+          wx.showModal({
+            title: '提示',
+            content: '发布成功！',
+            showCancel: false,
+            success: function(res) {
+              wx.navigateTo({
+                url: '../me/info/info'
+              })
+            }
+          })
+        }
+      },
+      fail: function(err) {
+        console.log(err);        
+      }
+    })
+  }
 })

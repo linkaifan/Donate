@@ -12,7 +12,14 @@ var config = {
         host,
         // 登录地址
         loginUrl: `${host}/user/login`,
-
+        getRank: `${host}/user/getRank`,
+        getInfo: `${host}/user/getInfo`,
+        posting: `${host}/reqs/posting`,
+        ongoing: `${host}/reqs/ongoing`,
+        done: `${host}/reqs/done`,
+        groupPost:`${host}/reqs/groupPost`,
+        enPost:`${host}/reqs/enPost`,
+        
     }
 };
 
