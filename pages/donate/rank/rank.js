@@ -14,11 +14,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('rank.onload');    
     let self = this
     wx.request({
       url: config.service.getRank,
       success: function (res) {
-        // console.log(res.data)
         self.setData({    
           rankItems: res.data.data
         })

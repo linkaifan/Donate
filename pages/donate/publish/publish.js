@@ -63,7 +63,7 @@ Page({
       this.setData({
         identity:app.globalData.identity
       })
-      if (this.data.identity == 'enterprise') {
+      if (this.data.identity == 'en') {
         this.setData({
           PublishInfo:this.data.enterpriseInfo
         })        
@@ -137,19 +137,9 @@ Page({
     })   
     if (this.data.identity == 'group') {
       this.postData(config.service.groupPost)
-    } else if (this.data.identity == 'enterprise') {
+    } else if (this.data.identity == 'en') {
       this.postData(config.service.enPost)
-    }  
-           
-  },
-  //获取开始时间
-  getTime(){
-    let date = new Date();
-    let year = date.getFullYear()  
-    let month = date.getMonth() + 1  
-    let day = date.getDate()
-    let begin = `${year}-${month}-${day}`
-    return begin
+    }            
   },
   postData(url){
     wx.request({

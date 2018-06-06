@@ -15,5 +15,17 @@
     "navigationBarBackgroundColor": "#0d548c",
     "navigationBarTitleText": "Donate",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/donate/see/see",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/donate/me/info/info",
+      "text": "个人中心"
+    },{
+      "pagePath": "pages/donate/publish/publish",
+      "text": "发布"      
+    }]
   }
 }

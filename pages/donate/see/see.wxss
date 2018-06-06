@@ -1,6 +1,6 @@
 /* pages/donate/see/see.wxss */
 .t-center{
-    text-indent: 180rpx;
+    text-indent: 150rpx;
 }
 .bar{
     display: flex;
@@ -21,6 +21,46 @@
     background-color: #ebebeb;
     flex-grow: 1;
 }
+.picker{
+    font-size: 12px;
+    margin-right: 30rpx;   
+}
+
+.nav{
+    text-align: center;
+    background-color: #fff;
+}
+.nav-bar{
+    display: flex;
+    font-size: 14px;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+}
+.brands,.category,.district{
+    width: 50%;
+    height: 96rpx;
+    line-height: 96rpx;
+}
+.nav-active{
+    color: rgb(13, 84, 140);
+}
+.nav-items{
+    font-size: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 38rpx 60rpx;
+    justify-content: space-between;
+}
+.nav-item{
+    border-radius: 5px;
+    /* margin-right: 45rpx; */
+    margin-bottom: 25rpx;
+    height: 64rpx;
+    line-height: 64rpx;
+    width: 180rpx;
+    background-color: #ebebeb;
+}
+  
 .items{
     background-color: #ebebeb;
     padding: 80rpx;
@@ -43,12 +83,12 @@
 }
 .sm-p{
     display: flex;
-    font-size: 12px;
+    font-size: 10px;
     justify-content: space-between;
     width: 80%;
 }
 .name{
-    font-size: 16px;
+    font-size: 12px;
 }
 .weight{
     font-weight: 600;
@@ -58,5 +98,14 @@
     height: 11rpx;
 }
 .item-p{
-    margin-bottom: 20rpx;
+    font-size: 11px;
+    margin-bottom: 12rpx;
+}
+.like-box{
+    text-align: right;
+    padding-right: 5rpx;
+}
+.like{
+    width: 22rpx;
+    height: 19rpx;
 }

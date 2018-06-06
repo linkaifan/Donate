@@ -20,7 +20,7 @@ Page({
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
-          console.log('允许获取info')
+          console.log('允许获取用户信息')
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: (res1) => {
@@ -91,9 +91,15 @@ Page({
       hasUserInfo: true
     })
   },
-  toRank(e) {
+  toMe(e) {
     let id = e.currentTarget.dataset.id
     app.globalData.identity = id;
+    wx.switchTab({
+      url: "../me/info/info"
+      // url:'../see/see'
+    })
+  },
+  toRank() {
     wx.navigateTo({
       url: "../rank/rank"
     })

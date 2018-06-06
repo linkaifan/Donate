@@ -8,6 +8,7 @@ Page({
   data: {
     //用户信息，
     userInfo: {},
+    identity:'',
     //完成
     completeItems:{
       items:[],

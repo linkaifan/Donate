@@ -1,64 +1,62 @@
 <!-- pages/donate/rank/rank.wxml -->
 <view id="rank">
-    <view class="wrap">
-        <view class="head">
-            <image src="../../../assets/icon/rank/wave.png"></image>
-        </view>
-        <view class="content">
-            <view class="content-head">
-                <image src="../../../assets/icon/rank/logo.png" class="logo"></image>
-                <text class="title">RAKING LIST</text>
-            </view>
-            <view class="rankBox" wx:for="{{rankItems}}" wx:key="index">
-                <view class="rank-n">
-									<image src="../../../assets/icon/rank/sm-icon.png" class="sm-icon">
-									</image>
-									<view class="rank-t"> {{item.no}}</view>
-								</view>             
-                <image src="{{item.avatar}}" class="avator"></image>
-                <view class="rank-name">{{item.nickname}}</view>
-                <view>
-                    <!-- <image src="../../../assets/icon/rank/icon1.png" class="icon1"></image> -->
-                    完成次数:{{item.counts}}
-                </view>
-            </view>
-        </view>
-        <view class="nav-box">
-            <view class="nav">
-                <navigator url="../publish/publish" class="toPub to">
-                    <view class="text">
-                        <image src="../../../assets/icon/rank/publish.png" 
-                        class="publish-icon"></image>
-                        <view>发布赞助需求</view>
-                    </view>
-                </navigator>
-                <view class="line"></view>
-                <navigator url="../see/see" class="toShow to">
-                    <view class="text">
-                        <image src="../../../assets/icon/rank/see.png" 
-                        class="publish-icon"></image>
-                        <view>查看赞助信息</view>
-                    </view>
-                </navigator>
-            </view>
-            <view class="nav">
-                <navigator url="../publish/publish" class="toCom to">
-                    <view class="text">
-                        <image src="../../../assets/icon/rank/shequ.png" 
-                        class="publish-icon2"></image>
-                        <view>社区</view>
-                    </view>
-                </navigator>
-                <view class="line"></view>
-                <navigator url="../me/info/info" class="toMe to">
-                    <view class="text">
-                        <image src="../../../assets/icon/rank/me.png" 
-                        class="publish-icon2"></image>
-                        <view>个人中心</view>
-                    </view>
-                </navigator>
-            </view>
-        </view>
-
-    </view>
+	<view class="wrap">
+			<view class="head">
+					<image src="../../../assets/icon/rank/wave.png"></image>
+			</view>
+			<view class="content">
+					<view class="content-head">
+							<image src="../../../assets/icon/rank/logo.png" class="logo"></image>
+							<text class="title">RAKING LIST</text>
+					</view>
+					<view class="rankBox" wx:for="{{rankItems}}" wx:key="index">
+							<view class="rank-n">
+									<image src="../../../assets/icon/rank/sm-icon.png" class="sm-icon"></image>
+									<view class="rank-t">{{item.no}}</view>
+							</view>
+							<image src="{{item.avatar}}" class="avator"></image>
+							<view class="rank-name">{{item.nickname}}</view>
+							<view>
+									<!-- <image src="../../../assets/icon/rank/icon1.png" class="icon1"></image> -->
+									完成次数:{{item.counts}}
+							</view>
+					</view>
+			</view>
+			<!-- <view class="nav-box">
+					<view class="nav">
+							<navigator url="../publish/publish" class="toPub to">
+									<view class="text">
+											<image src="../../../assets/icon/rank/publish.png" 
+											class="publish-icon"></image>
+											<view>发布赞助需求</view>
+									</view>
+							</navigator>
+							<view class="line"></view>
+							<navigator url="../see/see" class="toShow to">
+									<view class="text">
+											<image src="../../../assets/icon/rank/see.png" 
+											class="publish-icon"></image>
+											<view>查看赞助信息</view>
+									</view>
+							</navigator>
+					</view>
+					<view class="nav">
+							<navigator url="../publish/publish" class="toCom to">
+									<view class="text">
+											<image src="../../../assets/icon/rank/shequ.png" 
+											class="publish-icon2"></image>
+											<view>社区</view>
+									</view>
+							</navigator>
+							<view class="line"></view>
+							<navigator url="../me/info/info" class="toMe to">
+									<view class="text">
+											<image src="../../../assets/icon/rank/me.png" 
+											class="publish-icon2"></image>
+											<view>个人中心</view>
+									</view>
+							</navigator>
+					</view>
+			</view> -->
+	</view>
 </view>

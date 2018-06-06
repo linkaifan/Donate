@@ -1,29 +1,57 @@
 <!--pages/donate/see/see.wxml-->
 <view id="see">
-    <view class="bar">
-        <image class="search-icon" 
-        src="../../../assets/icon/see/search.png"></image>
-        <input class="search" placeholder="搜索" 
-        placeholder-class="t-center" bindinput="bindKeyInput"/>
-    </view>
-    <view class="items">
-        <view class="itemBox" wx:for="{{items}}" wx:key="index">
-            <image class="item-icon" 
-            src="../../../assets/icon/see/big-icon.png"></image>
-            <view class="name weight item-p">{{item.enterpriseName}}</view>
-            <view class="sm-p item-p">
-                <text>{{item.phone}}</text>
-                <text>{{item.address}}</text>
-                <view>
-                    <image class="sm-icon" 
-                    src="../../../assets/icon/see/money.png"></image>
-                    {{item.money}}
-                </view>
-            </view>
-            <view class="item-p">
-                <text class="weight">信息：</text>
-                <text>{{item.content}}</text>
-            </view>
-        </view>
-    </view>
+	<view class="bar">
+		<picker mode="region" bindchange="bindAddressChange" value="{place}}">
+			<view class="picker">
+				{{place[2]}}
+			</view>
+		</picker>
+		<image class="search-icon" bindtap="searchBtn"
+		src="../../../assets/icon/see/search.png"></image>
+		<input class="search" placeholder="搜索" 
+		placeholder-class="t-center" bindinput="bindKeyInput"/>
+	</view>
+<!-- 	<view class="nav">
+		<view class="nav-bar">
+			<view class="brands nav-active" wx:if="{{identity === 'group'}}"
+			data-nav="brands" bindtap="showNav">品牌</view>
+			<view class="category" wx:if="{{identity === 'enterprise'}}"
+			data-nav="category" bindtap="showNav">类型</view>
+			<view class="district" data-nav="district" bindtap="showNav">地区</view>
+		</view>
+		<view class="nav-items" wx:if="{{isShowNav}}">
+			<view wx:for="{{nav}}" wx:key="index" class="nav-item">{{item}}</view>
+		</view>
+	</view> -->
+
+	<view class="items">
+		<view class="itemBox" wx:for="{{items}}" wx:key="index">
+			<image class="item-icon" 
+			src="../../../assets/icon/see/big-icon.png"></image>
+			<view class="name weight item-p">{{ item.brand || item.group }} </view>
+			<view class="weight item-p">活动类型：{{ item.category }} </view>
+			<view class="sm-p item-p">
+				<text>{{item.phone}}</text>
+				<text>{{item.city}} | {{item.district}}</text>
+				<view>
+					<image class="sm-icon" 
+					src="../../../assets/icon/see/money.png"></image>
+					{{item.counts}}
+				</view>
+			</view>
+			<view class="item-p">
+				<text class="weight">信息：</text>
+				<text>{{item.content}}</text>
+			</view>
+			<view class="like-box">
+				{{item.liked_counts}}
+				<image src="../../../assets/icon/see/like.png" class="like" data-index="{{index}}"
+				wx:if="{{item.is_liked}}" catchtap="Liketoggle"></image>
+				<image src="../../../assets/icon/see/unlike.png" class="like" 
+				catchtap="Liketoggle" wx:if="{{!item.is_liked}}" data-index="{{index}}"></image>
+			</view>
+		</view>
+	</view>
+	<view wx:if="{{loading}}">loading</view>
+	<view wx:if="{{isAll}}">已加载全部</view>
 </view>

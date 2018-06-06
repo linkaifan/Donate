@@ -1,91 +1,107 @@
 <!-- pages/donate/publish/publish.wxml -->
 <view id="publish">
-    <view>
-        <view>
-            <image src="{{userInfo.avatarUrl}}" class="img"></image>
-        </view>
-        <view class="T-name">{{userInfo.nickName}}</view>
-    </view>
-    <form class="form">
-        <view class="inputBox">
-            <image src="../../../assets/icon/publish/school.png" class="icon"></image>
-            <label for="school" class="lab">学校：</label>
-            <input data-cls="school" bindinput="bindKeyInput" class="inp" />
-        </view>
-        <view class="inputBox" wx:if="{{identity == 'enterprise'}}">
-            <image src="../../../assets/icon/publish/brand.png" class="icon"></image>
-            <label for="brand"  class="lab">品牌：</label>
-            <input data-cls="brand" bindinput="bindKeyInput" class="inp"/>
-        </view>
-        <view class="inputBox" wx:if="{{identity == 'group'}}">
-            <image src="../../../assets/icon/publish/group.png" class="icon"></image>
-            <label for="group"  class="lab">社团：</label>
-            <input data-cls="group" bindinput="bindKeyInput" class="inp"/>
-        </view>
-        <view class="inputBox">
-            <image src="../../../assets/icon/publish/contact.png" class="icon"></image>
-            <label for="contact" class="lab">联系人：</label>
-            <input data-cls="name" bindinput="bindKeyInput" class="inp"/>
-        </view>
-        <view class="inputBox">
-            <image src="../../../assets/icon/publish/address.png" class="icon-address"></image>
-            <label for="address" class="lab">地址：</label>
-            <!-- <input data-cls="address" bindinput="bindKeyInput" class="inp"/> -->
-            <picker mode="region" bindchange="bindAddressChange" 
-            value="{{PublishInfo.place}}" >
-                <view class="picker inp">
-                {{PublishInfo.place[0]}}，{{PublishInfo.place[1]}}，
-                {{PublishInfo.place[2]}}
-                </view>
-            </picker>
-        </view>
-        <view class="inputBox">
-            <image src="../../../assets/icon/publish/phone.png" class="icon-phone"></image>
-            <label for="phone" class="lab">手机：</label>
-            <input data-cls="phone" bindinput="bindKeyInput" class="inp"/>
-        </view>
-        <view class="inputBox">
-            <image src="../../../assets/icon/publish/qq.png" class="icon"></image>
-            <label for="qq" class="lab">QQ：</label>
-            <input data-cls="qq" bindinput="bindKeyInput" class="inp"/>
-        </view>
-        <view class="inputBox" >
-            <image src="../../../assets/icon/publish/wechat.png" class="icon-content"></image>
-            <label for="wechat" class="lab">微信：</label>
-            <input data-cls="wechat" bindinput="bindKeyInput" class="inp"/>
-        </view>
-       <view class="inputBox">
-            <image src="../../../assets/icon/publish/category.png" class="icon"></image>
-            <label for="category" class="lab">类别：</label>
-            <input data-cls="category" bindinput="bindKeyInput" class="inp"/>
-        </view>
-        <view class="inputBox" >
-            <image src="../../../assets/icon/publish/time.png" class="icon"></image>
-            <label for="time" class="lab">开始：</label>
-            <picker mode="date" value="{{PublishInfo.begin}}" 
-            start="2018-01-01" end="2030-01-01" 
-            bindchange="bindTimeChange">
-                <view class="picker inp">
-                {{PublishInfo.begin}}
-                </view>
-            </picker>
-        </view>
-        <view class="inputBox" >
-            <image src="../../../assets/icon/publish/time.png" class="icon"></image>
-            <label for="time" class="lab">截至：</label>
-            <picker mode="date" value="{{PublishInfo.end}}" 
-            start="2018-01-01" end="2030-01-01" 
-            bindchange="bindTimeChange">
-                <view class="picker inp">
-                {{PublishInfo.end}}
-                </view>
-            </picker>
-        </view>
-        <view class="inputBox  tarea" >
-            <image src="../../../assets/icon/publish/content.png" class="icon-content"></image>
-            <textarea data-cls="content" auto-height bindinput="bindKeyInput" 
-            placeholder="赞助内容" class="inp area"/>
-        </view>
-        <button class="btn" bindtap="submit">OK</button>
-    </form>
+	<view>
+		<view>
+			<image src="{{userInfo.avatarUrl}}" class="img"></image>
+		</view>
+		<view class="T-name">{{userInfo.nickName}}</view>
+	</view>
+	<form class="form">
+		<view class="inputBox">					
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/school.png" class="icon-school"></image>
+			</view>
+			<view class="lab">学校：</view>
+			<input data-cls="school" bindinput="bindKeyInput" class="inp" />
+		</view>
+		<view class="inputBox" wx:if="{{identity == 'enterprise'}}">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/brand.png" class="icon"></image>
+			</view>
+			<view class="lab">品牌：</view>
+			<input data-cls="brand" bindinput="bindKeyInput" class="inp" />
+		</view>
+		<view class="inputBox" wx:if="{{identity == 'group'}}">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/group.png" class="icon"></image>
+			</view>
+			<view class="lab">社团：</view>
+			<input data-cls="group" bindinput="bindKeyInput" class="inp" />
+		</view>
+		<view class="inputBox">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/contact.png" class="icon"></image>
+			</view>
+			<view class="lab">联系人：</view>
+			<input data-cls="name" bindinput="bindKeyInput" class="inp" />
+		</view>
+		<view class="inputBox">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/address.png" class="icon-address"></image>
+			</view>
+			<view class="lab">地址：</view>
+			<!-- <input data-cls="address" bindinput="bindKeyInput" class="inp"/> -->
+			<picker mode="region" bindchange="bindAddressChange" value="{{PublishInfo.place}}">
+				<view class="picker inp">
+					{{PublishInfo.place[0]}}，{{PublishInfo.place[1]}}，{{PublishInfo.place[2]}}
+				</view>
+			</picker>
+		</view>
+		<view class="inputBox">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/phone.png" class="icon-phone"></image>
+			</view>
+			<view class="lab">手机：</view>
+			<input data-cls="phone" bindinput="bindKeyInput" class="inp" />
+		</view>
+		<view class="inputBox">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/qq.png" class="icon-address"></image>
+			</view>
+			<view class="lab">QQ：</view>
+			<input data-cls="qq" bindinput="bindKeyInput" class="inp" />
+		</view>
+		<view class="inputBox">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/wechat.png" class="icon"></image>
+			</view>
+			<view class="lab">微信：</view>
+			<input data-cls="wechat" bindinput="bindKeyInput" class="inp" />
+		</view>
+		<view class="inputBox">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/category.png" class="icon"></image>
+			</view>
+			<view class="lab">赞助类别：</view>
+			<input data-cls="category" bindinput="bindKeyInput" class="inp" />
+		</view>
+		<view class="inputBox">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/time.png" class="icon"></image>
+			</view>
+			<view class="lab">开始时间：</view>
+			<picker mode="date" value="{{PublishInfo.begin}}" start="2018-01-01" end="2030-01-01" 
+			bindchange="bindTimeChange">
+				<view class="picker inp">{{PublishInfo.begin}}</view>
+			</picker>
+		</view>
+		<view class="inputBox">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/time.png" class="icon"></image>
+			</view>
+			<view class="lab">截至时间：</view>
+			<picker mode="date" value="{{PublishInfo.end}}" start="2018-01-01" end="2030-01-01"
+			 bindchange="bindTimeChange">
+				<view class="picker inp">{{PublishInfo.end}}</view>
+			</picker>
+		</view>
+		<view class="inputBox  tarea">
+			<view class="icon-box">
+				<image src="../../../assets/icon/publish/content.png" class="icon-content"></image>
+			</view>
+			<textarea data-cls="content" auto-height bindinput="bindKeyInput" 
+			placeholder="赞助内容" class="inp area" />
+		</view>
+		<button class="btn" bindtap="submit">OK</button>
+	</form>
 </view>

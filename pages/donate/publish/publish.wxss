@@ -29,8 +29,8 @@
     height: 50rpx;
 }
 .lab{
-    min-width: 100rpx;
-    margin-left: 10rpx;
+    margin-left: 15rpx;
+    white-space:nowrap;
 }
 .inp{
     flex-grow: 1;
@@ -52,9 +52,18 @@
     margin: 60rpx auto;
     text-align: center;
 }
+.icon-box{
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+}
 .icon{
     width: 30rpx;
     height: 30rpx;
+}
+.icon-school{
+    width: 30rpx;
+    height: 32rpx;
 }
 .icon-phone{
     width: 23rpx;

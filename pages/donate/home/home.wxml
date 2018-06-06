@@ -15,14 +15,18 @@
             </view>
         </view>
         <view class="nav" wx:if="{{userInfo}}">
-            <view class="toEnter" bindtap="toRank" data-id="enterprise">
-                <image src="../../../assets/icon/home/qiye.png" class="icon"></image>
+            <view class="toEnter" bindtap="toMe" data-id="en">
+                <image src="../../../assets/icon/home/en.png" class="icon"></image>
                 <text>企 业</text>
             </view>
-            <view class="toSch" bindtap="toRank" data-id="group">
-                <image src="../../../assets/icon/home/shetuan.png" class="icon"></image>
+            <view class="toStu" bindtap="toMe" data-id="group">
+                <image src="../../../assets/icon/home/stu.png" class="icon"></image>
                 <text>社 团</text>
             </view>
+        </view>
+        <view class="toRank" bindtap="toRank">
+            <image src="../../../assets/icon/home/rank.png" class="icon"></image>
+            <text>排行榜</text>
         </view>
     </view>
 </view>

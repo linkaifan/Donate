@@ -6,121 +6,34 @@ Page({
    * 页面的初始数据
    */
   data: {
+    scrollTop:0,
+    DetailPlace:'40rpx auto 0 auto',
     token:'',
     userInfo:{},
+    uid:'',
     //显示哪个板块
     curIndex:1,
     // 判断是否点击查看具体项目
     isShowDesInfo:false,
     des:{},
-    //完成
-    completeItems:{
-      items:[{
-        group:{
-          time:"2018-2-16",
-          title:"寻求营销大赛赞助",
-          content:"大家好我是你们的爸爸。",
-          school:'广东工业大学',
-          groupName:'维生数工作室',
-          address:'广东省广州市',
-          phone:'131433777',
-          avator:'../../../../assets/icon/me/test1.png',
-          money:25
-        },
-        enterprise:{
-          enterpriseName:'哔哩哔哩有限公司',
-          brand:'',      
-          contact:'',
-          address:'广东省广州市', 
-          phone:'12345657',   
-          qq:'',
-          email:'',
-          time:'2018-2-16',    
-          content:'社团你们好，我是你们的赞助爸爸。'  ,
-          avator:'../../../../assets/icon/me/test2.png' ,
-          money:25
-        }
-      }],
-    },
-    //发布
-    publish:{
-      items:[{
-        time:"2018-2-16",
-        title:"寻求营销大赛赞助",
-        content:"大家好我是你们的爸爸。",
-        school:'广东工业大学',
-        group:'维生数工作室',
-        address:'广东省广州市',
-        phone:'131433777'
-      },{
-        time:"2018-2-17",
-        title:"寻求yinxiao大赛赞助",
-        content:"大家好我是你们的爸爸",
-        school:'广东工业大学',
-        group:'维生数工作室',
-        address:'广东省广州市',
-        phone:'131433777'
-      },{
-        time:"2018-2-18",
-        title:"寻求yinxiaoling大赛赞助",
-        content:"大家好我是你们的爸爸",
-        school:'广东工业大学',
-        group:'维生数工作室',
-        address:'广东省广州市',
-        phone:'131433777'
-      }],
-    },
-    //进行中
-    doing:{
-      items:[{
-        group:{
-          time:"2018-2-16",
-          title:"寻求营销大赛赞助",
-          content:"大家好我是你们的爸爸。",
-          school:'广东工业大学',
-          groupName:'维生数工作室',
-          address:'广东省广州市',
-          phone:'131433777',
-          avator:'../../../../assets/icon/me/test1.png',
-          money:25
-        },
-        enterprise:{
-          enterpriseName:'哔哩哔哩有限公司',
-          brand:'',      
-          contact:'',
-          address:'广东省广州市', 
-          phone:'12345657',   
-          qq:'',
-          email:'',
-          time:'2018-2-16',    
-          content:'社团你们好，我是你们的赞助爸爸。'  ,
-          avator:'../../../../assets/icon/me/test2.png' ,
-          money:25
-        }
-      }]
-    },
     ongoings:null,
     postings:null,
-    dones:null
+    dones:null,
+    invites:null,
+    //要邀请的用户uid
+    inviteUid:'',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let self = this
-    console.log('info.onload');
-    
+    console.log('info.onload');   
     this.setData({    
       userInfo: app.globalData.userInfo,
-      token : wx.getStorageSync('token') 
+      token: wx.getStorageSync('token'),
+      uid:wx.getStorageSync('uid')
     }) 
-    //获取正在进行数据,存在ongings里，再根据type分出en和stu
-    this.getData(config.service.ongoing,'ongoings')
-    //获取已发布数据,存在postings里
-    this.getData(config.service.posting,'postings')
-    //获取正在进行数据,存在dones里
-    // this.getData(config.service.done,'dones')
   },
 
   /**
@@ -133,7 +46,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    //获取正在进行数据,存在ongings里，再根据type分出en和stu
+    this.getData(config.service.ongoing,'ongoings')
+    //获取已发布数据,存在postings里
+    this.getData(config.service.posting,'postings')
+    //获取正在进行数据,存在dones里
+    this.getData(config.service.done,'dones')  
+    //获取受邀请数据,存在invites里
+    this.getData(config.service.inviteList,'invites')  
   },
 
   /**
@@ -170,7 +90,18 @@ Page({
   onShareAppMessage: function () {
   
   },
+  //页面滚动触发事件的处理函数
+  onPageScroll(e){
+    this.setData({
+      scrollTop:e.scrollTop,
+    })   
+  },
   // 自定义函数
+  bindKeyInput: function(e) {       
+    this.setData({
+      inviteUid: e.detail.value
+    })
+  },
   /*获取正在进行，已完成，已发布。
   url：ongoing/posting/done[config], objStr:ongings/postings/dones*/
   getData(url,objStr){
@@ -198,15 +129,17 @@ Page({
   changeCurIndex(e){  
     let i = e.currentTarget.dataset.i
     this.setData({
-      isSelect:false,
       curIndex:i
     })          
   },
-  ShowDesInfo(e){
+  ShowDesInfo(e){      
     let index = e.currentTarget.dataset.info
+    let key = e.currentTarget.dataset.cls
+    let value = this.data[key][index]    
     this.setData({
       isShowDesInfo:true,
-      des:this.data.publish.items[index]
+      des:value,
+      DetailPlace:`${20+this.data.scrollTop}px auto 0 auto`,
     })
   },
   closeDesInfo(){
@@ -214,5 +147,25 @@ Page({
       isShowDesInfo:false
     })
   },
-
+  // sendInvitation(){
+  //   let self = this   
+  //   wx.request({
+  //     url: config.service.sendInvitation,
+  //     method: 'POST',
+  //     header: {
+  //       "content-type": "application/x-www-form-urlencoded"
+  //     },
+  //     data:{
+  //       token:this.data.token,
+  //       type:this.data.des.type,
+  //       req_id:
+  //       uid:this.data.inviteUid
+  //     },
+  //     success: function (res) {
+  //     },
+  //     fail: function(err) {
+  //       console.log(err);        
+  //     }
+  //   })    
+  // }
 })
