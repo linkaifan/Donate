@@ -142,6 +142,9 @@ Page({
     }            
   },
   postData(url){
+    wx.showLoading({
+      title: '发布中',
+    })
     wx.request({
       url: url,
       method: 'POST',
@@ -151,6 +154,7 @@ Page({
       data:this.data.PublishInfo,
       success: function (res) {
         console.log(res);
+        wx.hideLoading()
         if (res.statusCode === 200) {
           wx.showModal({
             title: '提示',

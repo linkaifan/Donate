@@ -131,6 +131,7 @@ Page({
               if (res2.data.status_code == 200) {
                 wx.setStorageSync('token', res2.data.data.token)
                 wx.setStorageSync('openid', res2.data.data.openid)
+                wx.setStorageSync('uid', res2.data.data.uid)
               }
             }
           })

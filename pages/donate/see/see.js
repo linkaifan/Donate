@@ -20,7 +20,6 @@ Page({
     district:["广州","汕头","惠州","珠海","东莞","清远","佛山"], 
     nav:null,*/
     isShowNav:false,
-    loading:false,
     isAll:false,
     place:['广东省','广州市','番禺市'],
   },
@@ -128,8 +127,8 @@ Page({
   /*获取企业发布，社团发布信息
   url：EnAllReqs/GroupAllReqs,flag：最后一条的created_at字段【分页】*/
   getData(url,flag){
-    this.setData({
-      loading: true
+    wx.showLoading({
+      title: '获取数据中',
     })
     let self = this   
     wx.request({
@@ -144,17 +143,21 @@ Page({
       },
       success: function (res) {
         let data = res.data.data  
+        wx.hideLoading()
         if (!data.length) {          
           console.log('加载完成');  
           self.setData({
             isAll:true,
-            loading: false
-          })        
+          })    
+          wx.showToast({
+            title: '已加载全部',
+            icon: 'success',
+            duration: 2000
+          })    
         }else{
           self.data.items.push(...data)
           self.setData({
             items:self.data.items,
-            loading: false
           })
         }
       },
@@ -181,6 +184,9 @@ Page({
     this.setData({
       items:this.data.items
     })
+    wx.showLoading({
+      title: '发送中',
+    })
     wx.request({
       url,
       method: 'POST',
@@ -194,7 +200,8 @@ Page({
       },
       success: function (res) {
         let data = res.data
-        console.log(data);                 
+        console.log(data); 
+        wx.hideLoading()                
       },
       fail: function(err) {
         console.log(err);        
@@ -210,10 +217,10 @@ Page({
   },
   //点击搜索icon,参数token type province city district name[搜索框内容] flag,
   search(flag,type){
-    this.setData({
-      loading: true
-    })
-    let self = this   
+    let self = this 
+    wx.showLoading({
+      title: '搜索中',
+    })  
     wx.request({
       url: config.service.search,
       method: 'POST',
@@ -230,20 +237,23 @@ Page({
         flag:undefined
       },
       success: function (res) {
-        let data = res.data.data   
-        console.log(data);        
+        let data = res.data.data    
+        wx.hideLoading()      
         if (!data.length) {          
           console.log('加载完成');  
           self.setData({
             isAll:true,
-            loading: false,
             search:''
           })        
+          wx.showToast({
+            title: '已加载全部',
+            icon: 'success',
+            duration: 2000
+          })
         }else{
           self.data.items.push(...data)
           self.setData({
             items:self.data.items,
-            loading: false,
             search:''
           })
         }

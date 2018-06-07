@@ -105,7 +105,10 @@ Page({
   /*获取正在进行，已完成，已发布。
   url：ongoing/posting/done[config], objStr:ongings/postings/dones*/
   getData(url,objStr){
-    let self = this   
+    let self = this 
+    wx.showLoading({
+      title: '获取数据中',
+    })   
     wx.request({
       url: url,
       method: 'POST',
@@ -119,6 +122,7 @@ Page({
         self.setData({
           [objStr]:res.data.data
         })
+        wx.hideLoading()
       },
       fail: function(err) {
         console.log(err);        
@@ -140,32 +144,124 @@ Page({
       isShowDesInfo:true,
       des:value,
       DetailPlace:`${20+this.data.scrollTop}px auto 0 auto`,
-    })
+    })   
   },
   closeDesInfo(){
     this.setData({
       isShowDesInfo:false
     })
   },
-  // sendInvitation(){
-  //   let self = this   
-  //   wx.request({
-  //     url: config.service.sendInvitation,
-  //     method: 'POST',
-  //     header: {
-  //       "content-type": "application/x-www-form-urlencoded"
-  //     },
-  //     data:{
-  //       token:this.data.token,
-  //       type:this.data.des.type,
-  //       req_id:
-  //       uid:this.data.inviteUid
-  //     },
-  //     success: function (res) {
-  //     },
-  //     fail: function(err) {
-  //       console.log(err);        
-  //     }
-  //   })    
-  // }
+  sendInvitation(){
+    let self = this   
+    wx.showLoading({
+      title: '发送中',
+    }) 
+    wx.request({
+      url: config.service.sendInvitation,
+      method: 'POST',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        token:this.data.token,
+        type:this.data.des.type,
+        req_id:this.data.des.id,
+        uid:this.data.inviteUid
+      },
+      success: function (res) {
+        if (res.data.status_code == 200) {
+          wx.hideLoading()
+          wx.showToast({
+            title: '邀请成功',
+            icon: 'success',
+            duration: 2000
+          })
+          setTimeout(function(){
+            wx.reLaunch({
+              url: './info'
+            })
+          },2500)
+          self.setData({
+            isShowDesInfo:false,
+            // inviteUid:''
+          })
+        }        
+      },
+      fail: function(err) {
+        console.log(err);        
+      }
+    })    
+  },
+  sendChoice(e){
+    let self = this  
+    let choice =  e.currentTarget.dataset.choice
+    console.log(choice);   
+    wx.showLoading({
+      title: '处理中',
+    })     
+    wx.request({
+      url: config.service.choice,
+      method: 'POST',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        token:this.data.token,
+        choice:choice,
+        id:this.data.des.id
+      },
+      success: function (res) {
+        console.log(res);        
+        wx.hideLoading()
+        wx.showToast({
+          title: '发送成功',
+          icon: 'success',
+          duration: 2000
+        })
+        setTimeout(function(){
+          wx.reLaunch({
+            url: './info'
+          })
+        },2500)
+      },
+      fail: function(err) {
+        console.log(err);        
+      }
+    })    
+  },
+  complete(){
+    let self = this
+    wx.showLoading({
+      title: '处理中',
+    })     
+    wx.request({
+      url: config.service.end,
+      method: 'POST',
+      header: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+      data:{
+        token:this.data.token,
+        type:this.data.des.type,
+        id:this.data.des.id
+      },
+      success: function (res) {
+        console.log(res);        
+        wx.hideLoading()
+        wx.showToast({
+          title: '确认成功，请耐心等待对方确认',
+          icon: 'none',
+          duration: 2000
+        })
+        setTimeout(function(){
+          wx.reLaunch({
+            url: './info'
+          })
+        },2500)
+      },
+      fail: function(err) {
+        console.log(err);        
+      }
+    })         
+  }
 })

@@ -32,7 +32,7 @@
 					<view class="publish-info">
 							<view class="publish-time publish-p">发布时间：{{item.begin}}</view>
 							<!-- <view class="publish-title publish-p">{{item.title}}</view> -->
-							<view class="publish-content publish-p">内容：{{item.content}}</view>
+							<view class="ellipsis-2 publish-p">内容：{{item.content}}</view>
 					</view>
 					<image src="../../../../assets/icon/me/right.png" class="publish-right ib"></image>
 			</view>
@@ -48,16 +48,12 @@
 									{{item.en_nickname || item.stu_nickname}}
 							</view>
 							<view class="doing-t">
-									<image class="ib sm-icon" src="../../../../assets/icon/me/school.png"></image>
-									{{item.school}}
-							</view>
-							<view class="doing-t">
 									<image class="ib sm-icon" src="../../../../assets/icon/me/address.png"></image>
 									{{item.city}}{{item.district}}
 							</view>
 							<view class="doing-t">
 									<image class="ib sm-icon" src="../../../../assets/icon/me/money.png"></image>
-									25
+									{{item.en_counts || item.stu_counts || '0'}}
 							</view>
 					</view>
 					<view class="doing-right">
@@ -71,33 +67,6 @@
 						<view class="more-box">
 							<image src="../../../../assets/icon/me/more.png" class="more-btn"></image>
 						</view>						
-					</view>
-				</view>
-				<view class="enterprise-box">
-					<!-- <image class="ib big-icon" src="../../../../assets/icon/me/entr.png"> 
-					</image> -->
-					<view class="doing-left">
-							<image class="db avator" src="{{item.partner_avatar}}"></image>
-							<view class="doing-t">
-									<image class="ib sm-icon" src="../../../../assets/icon/me/entr2.png"></image>
-									{{item.partner_nickname}}
-							</view>
-							<view class="doing-t">
-									<image class="ib sm-icon" src="../../../../assets/icon/me/money.png"></image>
-									25
-							</view>
-					</view>
-					<view class="doing-right">
-						<view class="doing-time ">
-							<text class="weight content-t">发布时间:{{item.created_at}}</text>
-						</view>
-						<view class="doing-cotent ">
-							<view class="weight content-t">发布内容:</view>
-							<view class="ellipsis-6">{{item.content}}</view>
-						</view>
-						<view class="more-box">
-							<image src="../../../../assets/icon/me/more.png" class="more-btn"></image>
-						</view>	
 					</view>
 				</view>
 			</view>
@@ -147,45 +116,68 @@
 			</view>
 		</view>
 		<view class="show-invite show" hidden="{{!(curIndex == 3)}}">
-			yaoqing
+			<view class="invite-box" wx:for="{{invites}}" wx:key="index"
+			data-info="{{index}}"  data-cls="invites" bindtap="ShowDesInfo"> 
+				<image src="{{userInfo.avatarUrl}}" class="invite-img"/>
+				<view class="invite-right">
+					<view>开始时间：{{item.begin}}</view>
+					<view wx:if="{{item.category}}">类型：{{item.category}}</view>
+					<view wx:if="{{!item.category}}">地区：{{item.district}}</view>
+					<view class="ellipsis-2">内容：
+						<text class="doing-t">{{item.content}}</text>
+					</view>
+				</view>
+				<image src="../../../../assets/icon/me/right.png" class="publish-right ib"></image>
+			</view>
 		</view>
 	</view>
 	<view class="wrap" hidden="{{!isShowDesInfo}}">
 		<view class="des-info" style="margin:{{DetailPlace}}">
 				<view class="des-iconBox">
-						<image src="../../../../assets/icon/me/info.png" class="info-icon ib" bindtap="closeDesInfo" />
+					<image src="../../../../assets/icon/me/info.png" class="info-icon ib" bindtap="closeDesInfo" />
 				</view>
 				<view class="des-time weight des-t">开始时间：{{des.begin}}</view>
 				<view class="des-time weight des-t">截止时间：{{des.end}}</view>
 				<view class="des-address des-t">
-						<text class="weight">地区:</text>
-						{{des.province}}{{des.city}}{{des.district}}
+					<text class="weight">地区:</text>
+					{{des.province}}{{des.city}}{{des.district}}
 				</view>
 				<view class="des-school des-t">
-						<text class="weight">学校:</text>
-						{{des.school}}
+					<text class="weight">学校:</text>
+					{{des.school}}
 				</view>
 				<view class="des-group des-t">
-						<text class="weight">组织:</text>
-						{{des.group}}
+					<text class="weight">组织:</text>
+					{{des.group}}
 				</view>
 				<view class="des-title des-t">
-						<text class="weight">类别:</text>
-						{{des.category}}
+					<text class="weight">类别:</text>
+					{{des.category}}
 				</view>
 				<view class="des-content des-t">
-						<view class="weight">发布内容:</view>
-						{{des.content}}
+					<view class="weight">发布内容:</view>
+					{{des.content}}
 				</view>
 				<view class="des-phone des-t">
-						<text class="weight ib">联系方式:</text>
-						<view>微信：{{des.wechat}}</view>
-						<view>电话：{{des.phone}}</view>
+					<text class="weight ib">联系方式:</text>
+					<view>微信：{{des.wechat}}</view>
+					<view>电话：{{des.phone}}</view>
 				</view>
-				<view class="invite-box" wx:if="{{curIndex == 0}}">
+				<view wx:if="{{curIndex == 0}}">
 					<text class="weight ib">要邀请的用户uid：</text>
-					<input class="search" placeholder="uid" bindinput="bindKeyInput"/>
+					<input class="search" placeholder="请填写uid" bindinput="bindKeyInput"/>
 					<view class="des-btn" bindtap="sendInvitation">邀 请</view>
+				</view>		
+				<view  wx:if="{{curIndex == 1}}">
+					<view class="des-btn" bindtap="complete">确认完成</view>
+					<!-- <view wx:if="{{des.partner_end && des.}}">等待对方确认中...</view> -->
+				</view>		
+				<view wx:if="{{curIndex == 3}}" class="invite-btn">
+					<!-- 是否接受邀请，1为接受，2为拒绝 -->
+					<view class="des-btn2" bindtap="sendChoice" data-choice="1">
+						接 受</view>
+					<view class="des-btn2" bindtap="sendChoice" data-choice="2">
+						拒 绝</view>	
 				</view>				
 		</view>
 	</view>

@@ -2,7 +2,7 @@
 <view id="rank">
 	<view class="wrap">
 			<view class="head">
-					<image src="../../../assets/icon/rank/wave.png"></image>
+					<image src="../../../assets/icon/rank/wave.png" class="wave"></image>
 			</view>
 			<view class="content">
 					<view class="content-head">

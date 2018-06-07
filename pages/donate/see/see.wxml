@@ -52,6 +52,5 @@
 			</view>
 		</view>
 	</view>
-	<view wx:if="{{loading}}">loading</view>
-	<view wx:if="{{isAll}}">已加载全部</view>
+	<!-- <view wx:if="{{isAll}}">已加载全部</view> -->
 </view>

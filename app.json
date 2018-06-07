@@ -17,15 +17,22 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
+    "selectedColor":"#0d548c",
     "list": [{
       "pagePath": "pages/donate/see/see",
-      "text": "首页"
+      "text": "首页",
+      "iconPath":"assets/icon/home.png",
+      "selectedIconPath":"assets/icon/home.png"
     }, {
       "pagePath": "pages/donate/me/info/info",
-      "text": "个人中心"
+      "text": "个人中心",
+      "iconPath":"assets/icon/me1.png",
+      "selectedIconPath":"assets/icon/me1.png"
     },{
       "pagePath": "pages/donate/publish/publish",
-      "text": "发布"      
+      "text": "发布" ,
+      "iconPath":"assets/icon/post.png",
+      "selectedIconPath":"assets/icon/post.png"
     }]
   }
 }

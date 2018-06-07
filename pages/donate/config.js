@@ -27,6 +27,7 @@ var config = {
         sendInvitation:`${host}/reqs/sendInvitation`,
         inviteList:`${host}/reqs/inviteList`,
         choice:`${host}/reqs/choice`,
+        end:`${host}/reqs/end`,
     }
 };
 
